@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+    --main-color: #f10505;
+} 
+header h1 {
+    font-size: 4em;
+    text-align: center;
+}
+body {
+    background: rgb(93, 93, 218);
+}
+#btnContainer {
+    text-align: center;
+}
+.buttons {
+    padding: 10px 20px;
+    font-size: 1.5em;
+    color: white;
+    background-color: rgb(161, 124, 243);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.25s;
+}
+.buttons:hover {
+    background-color: rgb(108, 46, 231);
+}
+label {
+    margin-left: 21.8em;
+}
+section {
+    display: flex;
+    justify-content: center;
+    margin-top: 16em;
+} 
+
+#phrase {
+    font-size: 3.5em;
+    color: black;
+    display: flex;
+    justify-content: center; 
+    position: absolute; 
+}
+.red-heart {
+    background-color: var(--main-color); 
+    width: 200px;
+    height: 200px;
+    position: relative;
+    top: 0;
+    transform: rotate(-45deg);
+}
+.red-heart:before,
+.red-heart:after {
+    content: "";
+    background-color: var(--main-color); 
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    position: absolute;
+}
+.red-heart:before {
+    top: -100px;
+    left: 0;
+}
+.red-heart:after {
+    left: 100px;
+    top: 0;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Conversation Hearts</h1>
+        <div id="btnContainer">
+            <button id="changeColor" class="buttons" onclick="randomColor()">Change Heart Color</button>
+           <button id="changeMessage" class="buttons" onclick="randomMessage()">Change Message</button>
+           <button id="mlabel" class="buttons" onclick="enterText()"> Submit </button> 
+        </div>
+        <label>Type in your own message and press the submit button: </label><input type="text" id="myText"></label>
+    </header>
+    <section>
+        <div class="red-heart"></div>
+        <div id="phrase">BE MINE</div>
+    </section>
+    
+    <script>
+        // function for Enter a message Button
+        function enterText() {
+            let input = document.getElementById("myText").value;
+            let out = input;
+            document.getElementById("phrase").innerHTML = out;
+        }
+            
+        // function for change heart color button
+        function randomColor() {
+            const RED = Math.round(Math.random() * 255)
+            const GREEN = Math.round(Math.random() * 255)
+            const BLUE = Math.round(Math.random() * 255)
+            let root = document.querySelector(`:root`);
+            const color = `rgb(${RED}, ${GREEN}, ${BLUE})`
+            root.style.setProperty("--main-color", color);
+        }
+            
+        // function for change message button
+        function randomMessage() {
+            let message = new Array("BE MINE", "SWEET<br>HEART", "KISS ME", "I LOVE YOU", "ALL MINE", "CUTIE PIE", "LUV YA", "HUG ME");
+            let random = message[Math.floor(Math.random() * message.length)];
+            document.getElementById("phrase").innerHTML = random;
+        }
+    </script>
+</body>
+</html>
