@@ -1,2 +1,2 @@
 # hello-world
-This repository is for Computer Systems Studio III
+This repository is for Machine Learning files
